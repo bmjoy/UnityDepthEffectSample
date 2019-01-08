@@ -1,0 +1,29 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+#define THREAD_BLOCK_SIZE 16
+
+RWStructuredBuffer<float3> PositionBuffer;
+Texture2D<float4> tex;
+SamplerState _LinearClamp;
+float _Time;
+
+[numthreads(THREAD_BLOCK_SIZE, 1, 1)]
+void CSMain(uint id : SV_DispatchThreadID)
+{
+    float3 pos = PositionBuffer[id];
+
+    /*
+    float x = (fmod((float) id, 256.0)) / 256.0;
+    float y = ((float) id / 256.0 * 1.0) / 256.0;
+    float2 uv = float2(x,y);
+
+    float4 col = tex.SampleLevel(_LinearClamp, uv, 0);
+    float depth = col.r;
+    if (depth > 0.6)
+    {
+        pos.z = depth * 3.0;
+    }
+    */
+    
+    PositionBuffer[id] = pos;
+}
