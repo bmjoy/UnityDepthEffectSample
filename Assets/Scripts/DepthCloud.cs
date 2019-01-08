@@ -34,8 +34,6 @@ public class DepthCloud : BaseCompute
             pos.y = (Mathf.Floor((float)i / (float)quadsSize) * size) - (quadsSize * 0.5f) * size;
             pos.z = 0f;
 
-            //Debug.Log(pos);
-
             positions[i] = pos;
         }
 

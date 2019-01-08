@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Model : MonoBehaviour {
-    float degreesPerSecond = 10f; // angular speed
+    float degreesPerSecond = 10f;
     Vector3 axis = new Vector3(0f,1f,0f);
+
     void Update()
     {
         Quaternion q = Quaternion.AngleAxis(degreesPerSecond * Time.deltaTime, axis);
